@@ -1,11 +1,2 @@
-<%= form_with(model: @task) do |form| %>
-  <div class="task_name">
-    <%= form.label :task_name %>
-    <%= form.text_field :task_name %>
-  </div>
-  <div class="content">
-    <%= form.label :content %>
-    <%= form.text_area :content %>
-  </div>
-  <%= form.submit "タスクを更新" %>
-<% end %>
+<h2>タスク編集画面</h2>
+<%= render "form" %>
