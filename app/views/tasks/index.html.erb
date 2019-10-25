@@ -6,9 +6,9 @@
     <th>内容</th>
   </tr>
 
-<% @tasks.each do |blog| %>
+<% @tasks.each do |task| %>
   <tr>
-    <td><%= task.title %></td>
+    <td><%= task.task_name %></td>
     <td><%= task.content %></td>
   </tr>
 <% end %>
