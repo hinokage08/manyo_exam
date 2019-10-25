@@ -1,16 +1,25 @@
 # README
+* Userモデル
+|カラム名|データ型|
+|:---:|:---:|
+|id|integer|
+|name|string|
+|password|string|
+|password_digest|string|
 
-User
--- name(string)
--- password(string)
--- id(integer)
 
-Task
--- deadline(timestamp)
--- status(string)
--- task_name(string)
--- priority(integer)
--- id(integer)
+* Taskモデル
+|カラム名|データ型|
+|:---:|:---:|
+|id|integer|
+|deadline|date|
+|status|string|
+|task_name|string|
+|content|text|
+|priority|string|
 
-Label
--- id(integer)
+
+* Labelモデル
+|カラム名|データ型|
+|:---:|:---:|
+|id|integer|
