@@ -2,10 +2,10 @@ require 'rails_helper'
 
 RSpec.feature "タスク管理機能", type: :feature do
   background do
-    FactoryBot.create(:second_task, task_name: 'test1', content: 'test1')
-    FactoryBot.create(:second_task, task_name: 'test2', content: 'test2')
-    FactoryBot.create(:second_task, task_name: 'test3', content: 'test3')
-    FactoryBot.create(:second_task, task_name: 'test4', content: 'test4')
+    FactoryBot.create(:second_task, task_name: 'test1', content: 'test1', created_at: Time.current + 1.days)
+    FactoryBot.create(:second_task, task_name: 'test2', content: 'test2', created_at: Time.current + 2.days)
+    FactoryBot.create(:second_task, task_name: 'test3', content: 'test3', created_at: Time.current + 3.days)
+    FactoryBot.create(:second_task, task_name: 'test4', content: 'test4', created_at: Time.current + 4.days)
   end
   scenario "タスク一覧のテスト" do
     visit tasks_path
