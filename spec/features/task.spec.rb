@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.feature "タスク管理機能", type: :feature do
+  
   background do
     FactoryBot.create(:second_task, task_name: 'test1', content: 'test1', created_at: Time.current + 1.days)
     FactoryBot.create(:second_task, task_name: 'test2', content: 'test2', created_at: Time.current + 2.days)
@@ -31,7 +32,7 @@ RSpec.feature "タスク管理機能", type: :feature do
 
   scenario "タスクが作成日時の降順に並んでいるかのテスト" do
     visit tasks_path
-    save_and_open_page
+    # save_and_open_page
     task = all('tr td')
     task_0 = task[0]
     expect(task_0).to have_content 'test4'
