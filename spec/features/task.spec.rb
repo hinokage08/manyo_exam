@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.feature "タスク管理機能", type: :feature do
-  
+
   background do
     FactoryBot.create(:second_task, task_name: 'test1', content: 'test1', created_at: Time.current + 1.days)
     FactoryBot.create(:second_task, task_name: 'test2', content: 'test2', created_at: Time.current + 2.days)
@@ -16,8 +16,8 @@ RSpec.feature "タスク管理機能", type: :feature do
 
   scenario "タスク作成のテスト" do
     visit new_task_path
-    fill_in 'Task name', with: 'test_task'
-    fill_in 'Content', with: 'test'
+    fill_in 'タスク名', with: 'test_task'
+    fill_in '内容', with: 'test'
     click_on 'タスクを更新'
     expect(page).to have_content 'test_task'
     expect(page).to have_content 'test'
