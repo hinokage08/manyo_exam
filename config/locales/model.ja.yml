@@ -9,3 +9,16 @@ ja:
         content: タスク内容
         created_at: 作成日時
         updated_at: 更新日時
+  view:
+    tasks_show: タスク詳細
+    task_name: タスク名
+    content: タスク内容
+    index: タスク一覧
+    edit: 編集
+    new: 新規作成
+    show: 詳細
+    delete: 削除
+    created_at: 作成日時
+    tasks_new: タスク作成
+    tasks_edit: タスク編集
+    error_number: 件のエラーがあります。
