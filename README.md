@@ -20,6 +20,8 @@
 |status|string|
 |task_name|string|
 |content|text|
+|created_at|datetime|
+|updated_at|datetime|
 |priority|string|
 
 
