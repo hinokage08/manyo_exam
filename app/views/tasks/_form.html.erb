@@ -23,5 +23,19 @@
     <%= form.label :deadline %>
     <%= form.date_field :deadline %>
   </div>
+
+  <% if action_name == 'new' %>
+
+  <div class="status">
+    <%= form.hidden_field :status, value: 0 %>
+  </div>
+  <%= form.submit "タスクを作成" %>
+
+  <% else %>
+  <div class="status">
+    <%= form.label :status %>
+    <%= form.select :status, [['未完了',0],['完了',1]] %>
+  </div>
   <%= form.submit "タスクを更新" %>
+  <% end %>
 <% end %>
