@@ -205,10 +205,7 @@ ja:
       long: "%Y/%m/%d %H:%M"
       short: "%m/%d %H:%M"
     pm: 午後
-<<<<<<< HEAD
   view:
     task_name: "タスク名"
     content: "内容"
     created_at: "作成日時"
-=======
->>>>>>> 043ba15ce60d98de31042d60bfac4ac108ab3354

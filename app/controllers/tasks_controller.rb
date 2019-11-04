@@ -1,7 +1,11 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
   def index
-    @tasks = Task.all.order(id: "DESC")
+    if params[:sort_deadline]
+      @tasks = Task.all.order(deadline: "DESC")
+    else
+      @tasks = Task.all.order(id: "DESC")
+    end
   end
 
   def new
@@ -39,7 +43,7 @@ class TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:task_name, :content)
+    params.require(:task).permit(:task_name, :content, :deadline)
   end
 
   def set_task
