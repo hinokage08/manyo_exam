@@ -2,12 +2,25 @@
 
 <%= notice %>
 <%= link_to "終了期限でソートする", tasks_path(sort_deadline: "true") %>
+<%= form_with(model: @task, local: true, method: :get, url: tasks_path) do |form| %>
+  <%= form.label :title_search, "タイトル検索" %>
+  <%= form.text_field :title%>
+
+  <%= form.label :status_search, "ステータス検索" %>
+  <%= form.select :status, [['未着手'],['着手中'],['完了']] %>
+
+  <%= form.hidden_field :search, value: true %>
+
+  <%= form.submit 'Search' %> <%= link_to 'Clear', tasks_path %>
+<% end %>
+
 <table>
   <tr>
     <th><%= t('view.task_name') %></th>
     <th><%= t('view.content') %></th>
     <th><%= t('view.created_at') %></th>
     <th>終了期日</th>
+    <th>ステータス</th>
   </tr>
 
 <% @tasks.each do |task| %>
@@ -16,6 +29,7 @@
     <td><%= task.content %></td>
     <td><%= task.created_at %></td>
     <td><%= task.deadline %></td>
+    <td><%= task.status %></td>
     <td><%= link_to t('view.show'), task_path(task.id) %></td>
     <td><%= link_to t('view.edit'), edit_task_path(task.id) %></td>
     <td><%= link_to t('view.delete'), task_path(task.id), method: :delete ,data: { confirm: "本当に削除してもよろしいですか？" } %></td>

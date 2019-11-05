@@ -43,10 +43,11 @@ class TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:task_name, :content, :deadline)
+    params.require(:task).permit(:task_name, :content, :deadline, :status)
   end
 
   def set_task
     @task = Task.find(params[:id])
   end
+
 end
