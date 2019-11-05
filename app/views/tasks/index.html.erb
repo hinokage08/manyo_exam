@@ -3,7 +3,7 @@
 <%= notice %>
 <%= link_to "終了期限でソートする", tasks_path(sort_deadline: "true") %>
 <%= form_with(model: @task, local: true, method: :get, url: tasks_path) do |form| %>
-  <%= form.label :task_name_search, "タイトル検索" %>
+  <%= form.label :task_name_search, "タスク名検索" %>
   <%= form.text_field :task_name%>
 
   <%= form.label :status_search, "ステータス検索" %>
