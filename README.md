@@ -17,12 +17,12 @@
 |:---:|:---:|
 |id|integer|
 |deadline|date|
-|status|string|
+|status|integer|
 |task_name|string|
 |content|text|
 |created_at|datetime|
 |updated_at|datetime|
-|priority|string|
+|priority|integer|
 
 
 * Labelモデル

@@ -27,14 +27,14 @@
   <% if action_name == 'new' %>
 
   <div class="status">
-    <%= form.hidden_field :status, value: '未完了' %>
+    <%= form.hidden_field :status, value: 0 %>
   </div>
   <%= form.submit "タスクを作成" %>
 
   <% else %>
   <div class="status">
     <%= form.label :status %>
-    <%= form.select :status, [['未着手'],['着手中'],['完了']] %>
+    <%= form.select :status, {未着手:'未着手', 着手中: '着手中', 完了: '完了'} %>
   </div>
   <%= form.submit "タスクを更新" %>
   <% end %>

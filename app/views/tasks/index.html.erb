@@ -7,7 +7,7 @@
   <%= form.text_field :task_name%>
 
   <%= form.label :status_search, "ステータス検索" %>
-  <%= form.select :status, [['未着手'],['着手中'],['完了']] %>
+  <%= form.select :status, Task.statuses.keys %>
 
   <%= form.hidden_field :search, value: true %>
 
