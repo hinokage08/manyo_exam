@@ -2,13 +2,13 @@ class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
   def index
     if params[:search]
-      @tasks = Task.where("task_name LIKE ?", "%#{ params[:task_name] }%").where(status: params[:status])
+      @tasks = Task.page(params[:page]).per(3).where("task_name LIKE ?", "%#{ params[:task_name] }%").where(status: params[:status])
     elsif params[:sort_deadline]
-      @tasks = Task.all.order(deadline: "DESC")
+      @tasks = Task.page(params[:page]).per(3).order(deadline: "DESC")
     elsif params[:sort_priority]
-      @tasks = Task.all.order(priority: "ASC")
+      @tasks = Task.page(params[:page]).per(3).order(priority: "ASC")
     else
-      @tasks = Task.all.order(id: "DESC")
+      @tasks = Task.page(params[:page]).per(3).order(id: "DESC")
     end
   end
 
