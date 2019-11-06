@@ -5,6 +5,8 @@ class TasksController < ApplicationController
       @tasks = Task.where("task_name LIKE ?", "%#{ params[:task_name] }%").where(status: params[:status])
     elsif params[:sort_deadline]
       @tasks = Task.all.order(deadline: "DESC")
+    elsif params[:sort_priority]
+      @tasks = Task.all.order(priority: "ASC")
     else
       @tasks = Task.all.order(id: "DESC")
     end
@@ -45,7 +47,7 @@ class TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:task_name, :content, :deadline, :status)
+    params.require(:task).permit(:task_name, :content, :deadline, :status, :priority)
   end
 
   def set_task
