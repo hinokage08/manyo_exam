@@ -16,12 +16,12 @@
 
 <table>
   <tr>
-    <th><%= t('view.task_name') %></th>
-    <th><%= t('view.content') %></th>
-    <th><%= t('view.created_at') %></th>
-    <th>終了期日</th>
-    <th>ステータス</th>
-    <th>優先順位</th>
+    <th class= 'th_task_name'><%= t('view.task_name') %></th>
+    <th class= 'th_content'><%= t('view.content') %></th>
+    <th class= 'th_created_at'><%= t('view.created_at') %></th>
+    <th class= 'th_deadline'>終了期日</th>
+    <th class= 'th_status'>ステータス</th>
+    <th class= 'th_priorit'>優先順位</th>
   </tr>
 
 <% @tasks.each do |task| %>
@@ -32,9 +32,9 @@
     <td><%= task.deadline %></td>
     <td><%= task.status %></td>
     <td><%= task.priority %></td>
-    <td><%= link_to t('view.show'), task_path(task.id) %></td>
-    <td><%= link_to t('view.edit'), edit_task_path(task.id) %></td>
-    <td><%= link_to t('view.delete'), task_path(task.id), method: :delete ,data: { confirm: "本当に削除してもよろしいですか？" } %></td>
+    <td><div class="alert alert-warning" role="alert"><%= link_to t('view.show'), task_path(task.id),class: "alert-link" %></td>
+    <td><div class="alert alert-info" role="alert"><%= link_to t('view.edit'), edit_task_path(task.id), class: "alert-link" %></div></td>
+    <td><div class="alert alert-danger" role="alert"><%= link_to t('view.delete'), task_path(task.id), class: "alert-link",  method: :delete ,data: { confirm: "本当に削除してもよろしいですか？" } %></td>
   </tr>
 <% end %>
 </table>
