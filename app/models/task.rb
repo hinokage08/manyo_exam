@@ -7,4 +7,7 @@ class Task < ApplicationRecord
 
   enum status: %i[未着手 着手中 完了]
   enum priority: %i[高 中 低]
+
+  scope :task_name_search, -> task_name { where("task_name LIKE ?", "%#{task_name}%") }
+  scope :status_search, -> status { where(status: status) }
 end
