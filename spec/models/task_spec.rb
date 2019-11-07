@@ -31,4 +31,21 @@ RSpec.describe Task, type: :model do
     task = Task.new(task_name: '成功テスト', content: '成功テスト', deadline: '2019-11-20', status: '未着手', priority: '高')
     expect(task).to be_valid
   end
+
+  context "modelに記述したscopeによる絞り込みが正しいか確かめる" do
+
+    before do
+      FactoryBot.create(:second_task)
+      FactoryBot.create(:third_task)
+      @task = FactoryBot.create(:task)
+    end
+
+    it 'scopeによる絞り込みが正しいか確かめる(task_nameのみの絞り込み)' do
+      expect(Task.task_name_search("test_01")).to include(@task)
+    end
+
+    it 'scopeによる絞り込みが正しいか確かめる(statusのみの絞り込み)' do
+      expect(Task.status_search("未着手")).to include(@task)
+    end
+  end
 end
