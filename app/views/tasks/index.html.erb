@@ -1,4 +1,4 @@
-<h1><%= t('view.index') %></h1>
+<h2><%= t('view.index') %></h2>
 <%= notice %>
 <%= link_to "終了期限でソートする", tasks_path(sort_deadline: "true") %>
 <%= link_to "優先順位でソートする", tasks_path(sort_priority: "true") %>
@@ -13,6 +13,7 @@
 
   <%= form.submit 'Search' %> <%= link_to 'Clear', tasks_path %>
 <% end %>
+<%= link_to t('view.new'), new_task_path, class: "btn btn-primary" %>
 
 <table>
   <tr>
@@ -28,8 +29,8 @@
   <tr>
     <td><%= task.task_name %></td>
     <td><%= task.content %></td>
-    <td><%= task.created_at %></td>
-    <td><%= task.deadline %></td>
+    <td><%= task.created_at.strftime('%Y-%m-%d') %></td>
+    <td><%= task.deadline.strftime('%Y-%m-%d') %></td>
     <td><%= task.status %></td>
     <td><%= task.priority %></td>
     <td><div class="alert alert-warning" role="alert"><%= link_to t('view.show'), task_path(task.id),class: "alert-link" %></td>
@@ -39,4 +40,3 @@
 <% end %>
 </table>
 <%= paginate @tasks %>
-<%= link_to t('view.new'), new_task_path %>
