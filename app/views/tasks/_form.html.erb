@@ -33,13 +33,13 @@
     <div class="status">
       <%= form.hidden_field :status, value: "未着手" %>
     </div>
-    <%= form.submit "タスクを作成" %>
+    <%= form.submit t('view.task_new') %>
 
     <% else %>
     <div class="status">
       <%= form.label :status %>
       <p><%= form.select :status, {未着手:'未着手', 着手中: '着手中', 完了: '完了'} %></p>
     </div>
-    <%= form.submit "タスクを更新" %>
+    <%= form.submit t('view.task_update') %>
     <% end %>
     <% end %>

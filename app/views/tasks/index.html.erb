@@ -1,12 +1,12 @@
 <h2><%= t('view.index') %></h2>
 <%= notice %>
-<%= link_to "終了期限でソートする", tasks_path(sort_deadline: "true") %>
-<%= link_to "優先順位でソートする", tasks_path(sort_priority: "true") %>
+<%= link_to t('view.deadline_sort'), tasks_path(sort_deadline: "true") %>
+<%= link_to t('view.priority_sort'), tasks_path(sort_priority: "true") %>
 <%= form_with(model: @task, local: true, method: :get, url: tasks_path) do |form| %>
-  <%= form.label :task_name_search, "タスク名検索" %>
+  <%= form.label :task_name_search, t('view.task_name_search') %>
   <%= form.text_field :task_name%>
 
-  <%= form.label :status_search, "ステータス検索" %>
+  <%= form.label :status_search, t('view.status_search') %>
   <%= form.select :status, Task.statuses.keys %>
 
   <%= form.hidden_field :search, value: true %>
@@ -20,9 +20,9 @@
     <th class= 'th_task_name'><%= t('view.task_name') %></th>
     <th class= 'th_content'><%= t('view.content') %></th>
     <th class= 'th_created_at'><%= t('view.created_at') %></th>
-    <th class= 'th_deadline'>終了期日</th>
-    <th class= 'th_status'>ステータス</th>
-    <th class= 'th_priorit'>優先順位</th>
+    <th class= 'th_deadline'><%= t('view.deadline') %></th>
+    <th class= 'th_status'><%= t('view.status') %></th>
+    <th class= 'th_priorit'><%= t('view.priority') %></th>
   </tr>
 
 <% @tasks.each do |task| %>

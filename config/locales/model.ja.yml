@@ -10,11 +10,17 @@ ja:
         created_at: 作成日時
         updated_at: 更新日時
         deadline: 終了期限
+        status: ステータス
         priority: 優先度
   view:
     tasks_show: タスク詳細
     task_name: タスク名
     content: タスク内容
+    deadline: 終了期限
+    status: ステータス
+    priority: 優先度
+    created_at: 作成日時
+    updated_at: 更新日時
     index: タスク一覧
     edit: 編集
     new: 新規作成
@@ -24,3 +30,9 @@ ja:
     tasks_new: タスク作成
     tasks_edit: タスク編集
     error_number: 件のエラーがあります。
+    deadline_sort: 終了期限でソート
+    priority_sort: 優先度でソート
+    task_name_search: タスク名検索
+    status_search: ステータス検索
+    task_new: タスクを作成
+    task_update: タスクを更新

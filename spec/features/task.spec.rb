@@ -17,8 +17,8 @@ RSpec.feature "タスク管理機能", type: :feature do
     visit new_task_path
     fill_in 'タスク名', with: 'test_task'
     fill_in '内容', with: 'test'
-    fill_in 'Deadline', with: '2019-11-14'
-    select '高', from: 'Priority'
+    fill_in '終了期限', with: '2019-11-14'
+    select '高', from: '優先度'
     click_on 'タスクを作成'
     expect(page).to have_content 'test_task'
     expect(page).to have_content 'test'
@@ -44,17 +44,17 @@ RSpec.feature "タスク管理機能", type: :feature do
     expect(task_0).to have_content 'test_03'
   end
 
-  scenario '「終了期限でソートする」を押すと終了期限の降順でソートされるかのテスト' do
+  scenario '「終了期限でソート」を押すと終了期限の降順でソートされるかのテスト' do
     visit tasks_path
-    click_on '終了期限でソートする'
+    click_on '終了期限でソート'
     task = all('tr td')
     task_0 = task[3]
     expect(task_0).to have_content '2019-11-16'
   end
 
-  scenario '「優先順位でソートする」を押すと終了期限の降順でソートされるかのテスト' do
+  scenario '「優先度でソート」を押すと終了期限の降順でソートされるかのテスト' do
     visit tasks_path
-    click_on '優先順位でソートする'
+    click_on '優先度でソート'
     task = all('tr td')
     task_0 = task[5]
     expect(task_0).to have_content '高'
