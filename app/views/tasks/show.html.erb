@@ -1,7 +1,12 @@
-<h1><%= t('view.tasks_show') %></h1>
-<p><%= t('view.task_name') %>: <%= @task.task_name %></p>
-<p><%= t('view.content') %>: <%= @task.content %></p>
+<div class="container">
+  <h2><%= t('view.tasks_show') %></h2>
+  <p><%= t('view.task_name') %>: <%= @task.task_name %></p>
+  <p><%= t('view.content') %>: <%= @task.content %></p>
+  <p><%= t('view.deadline') %>: <%= @task.deadline.strftime('%Y-%m-%d') %></p>
+  <p><%= t('view.priority') %>: <%= @task.priority %></p>
+  <p><%= t('view.status') %>: <%= @task.status %></p>
 
-<%= link_to t('view.show'), edit_task_path(@task.id) %>
-|
-<%= link_to t('view.index'), tasks_path %>
+  <%= link_to t('view.show'), edit_task_path(@task.id) %>
+  |
+  <%= link_to t('view.index'), tasks_path %>
+</container>

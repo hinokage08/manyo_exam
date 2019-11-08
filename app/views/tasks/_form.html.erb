@@ -11,13 +11,35 @@
     </div>
   <% end %>
 
-  <div class="task_name">
-    <%= form.label :task_name %>
-    <%= form.text_field :task_name %>
-  </div>
-  <div class="content">
-    <%= form.label :content %>
-    <%= form.text_area :content %>
-  </div>
-  <%= form.submit "タスクを更新" %>
-<% end %>
+    <div class="task_name">
+      <%= form.label :task_name %>
+      <p><%= form.text_field :task_name %></p>
+    </div>
+    <div class="content">
+      <%= form.label :content %>
+      <p><%= form.text_area :content %></p>
+    </div>
+    <div class="deadline">
+      <%= form.label :deadline %>
+      <p><%= form.date_field :deadline %></p>
+    </div>
+    <div class="priority">
+      <%= form.label :priority %>
+      <p><%= form.select :priority, {高: '高', 中: '中', 低: '低'}  %></p>
+    </div>
+
+    <% if action_name == 'new' %>
+
+    <div class="status">
+      <%= form.hidden_field :status, value: "未着手" %>
+    </div>
+    <%= form.submit t('view.task_new') %>
+
+    <% else %>
+    <div class="status">
+      <%= form.label :status %>
+      <p><%= form.select :status, {未着手:'未着手', 着手中: '着手中', 完了: '完了'} %></p>
+    </div>
+    <%= form.submit t('view.task_update') %>
+    <% end %>
+    <% end %>

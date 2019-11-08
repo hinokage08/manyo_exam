@@ -1,6 +1,8 @@
-<h1><%= t('view.tasks_show') %></h1>
-<%= render "form" %>
+<div class="container">
+  <h2><%= t('view.tasks_show') %></h2>
+  <%= render "form" %>
 
-<%= link_to t('view.show'), task_path(@task.id) %>
-|
-<%= link_to t('view.index'), tasks_path %>
+  <%= link_to t('view.show'), task_path(@task.id) %>
+  |
+  <%= link_to t('view.index'), tasks_path %>
+</div> 
