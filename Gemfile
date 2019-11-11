@@ -70,3 +70,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'kaminari', '~> 0.17.0'
 gem 'bootstrap4-kaminari-views'
+gem 'faker'
+gem 'bcrypt', '3.1.11'

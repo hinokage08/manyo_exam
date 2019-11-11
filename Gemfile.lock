@@ -47,6 +47,7 @@ GEM
     archive-zip (0.12.0)
       io-like (~> 0.3.0)
     arel (9.0.0)
+    bcrypt (3.1.11)
     bindex (0.8.1)
     bootsnap (1.4.5)
       msgpack (~> 1.0)
@@ -89,6 +90,8 @@ GEM
     factory_bot_rails (5.1.1)
       factory_bot (~> 5.1.0)
       railties (>= 4.2.0)
+    faker (2.7.0)
+      i18n (>= 1.6, < 1.8)
     ffi (1.11.1)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
@@ -232,6 +235,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bcrypt (= 3.1.11)
   bootsnap (>= 1.1.0)
   bootstrap4-kaminari-views
   byebug
@@ -241,6 +245,7 @@ DEPENDENCIES
   database_cleaner
   dotenv-rails
   factory_bot_rails
+  faker
   jbuilder (~> 2.5)
   kaminari (~> 0.17.0)
   launchy
