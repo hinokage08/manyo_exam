@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+  protect_from_forgery with: :exception
+  include SessionsHelper
 
   before_action :basic_authentication, if: :production?
 
@@ -6,7 +8,7 @@ class ApplicationController < ActionController::Base
 
   def production?
    Rails.env.production?
- end
+  end
 
   def basic_authentication
     authenticate_or_request_with_http_basic do |name, password|

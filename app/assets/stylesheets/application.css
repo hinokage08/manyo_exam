@@ -20,5 +20,15 @@
    height: 77px;
    border-bottom: solid 1px #cccccc;
    margin: 0 auto;
+ }
+
+ .logo {
    font-size: 90px;
+   display: inline;
+ }
+
+ .login_logout {
+   float: right;
+   font-size: 25px;
+   padding: 20px;
  }
