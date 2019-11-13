@@ -1,5 +1,4 @@
 class SessionsController < ApplicationController
-  before_action :dont_user_new, only: [:new]
   def new
   end
 
@@ -18,12 +17,6 @@ class SessionsController < ApplicationController
     session.delete(:user_id)
     flash[:notice] = 'ログアウトしました'
     redirect_to new_session_path
-  end
-
-  private
-
-  def dont_user_new
-    redirect_to tasks_path if logged_in?
   end
 
 end
