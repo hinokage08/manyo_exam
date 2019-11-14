@@ -1,7 +1,6 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
   before_action :display_limit
-  before_action :correct_task, only: [:show]
   def index
     if params[:search]
       @tasks = current_user.tasks.task_name_search(params[:task_name]).status_search(params[:status]).page(params[:page]).per(3)
@@ -58,11 +57,6 @@ class TasksController < ApplicationController
 
   def display_limit
     redirect_to new_session_path unless logged_in?
-  end
-
-  def correct_task
-      set_task
-      redirect_to tasks_path unless current_user_task?(@task)
   end
 
 end
