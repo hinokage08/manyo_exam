@@ -1,7 +1,7 @@
 class Admin::UsersController < ApplicationController
   before_action :check_admin
   def index
-    @users = User.select(:id, :name, :email, :admin, :created_at, :updated_at).order(id: "ASC")
+    @users = User.select(:id, :name, :email, :admin, :created_at, :updated_at).page(params[:page]).per(5).order(id: "ASC")
   end
 
   def new
@@ -37,8 +37,12 @@ class Admin::UsersController < ApplicationController
 
   def destroy
     @user = User.find(params[:id])
-    @user.destroy
-    redirect_to admin_users_url, notice: "ユーザー「#{@user.name}」を削除しました。"
+    if User.where(admin: true).count <= 1 && @user.admin?
+      redirect_to admin_users_path, notice: "ユーザー「#{@user.name}」を削除できません。"
+    else
+      @user.destroy
+      redirect_to admin_users_url, notice: "ユーザー「#{@user.name}」を削除しました。"
+    end
   end
 
   private
@@ -49,7 +53,7 @@ class Admin::UsersController < ApplicationController
 
 
   def check_admin
-    redirect_to root_url unless current_user.admin?
+    raise Forbidden unless current_user.admin?
   end
 
 end
