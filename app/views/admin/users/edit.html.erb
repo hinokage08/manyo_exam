@@ -1,2 +1,19 @@
-<h1>Admin::Users#edit</h1>
-<p>Find me in app/views/admin/users/edit.html.erb</p>
+<h2>ユーザー情報編集</h2>
+<%= form_with(model: [:admin, @user], local: true) do |f| %>
+  <%= f.label :name %>
+  <p><%= f.text_field :name %></p>
+
+  <%= f.label :email %>
+  <p><%= f.email_field :email %></p>
+
+  <%= f.label :admin %>
+  <%= f.check_box :admin %></p>
+
+  <%= f.label :password %>
+  <p><%= f.password_field :password %></p>
+
+  <%= f.label :password_confirmation %>
+  <p><%= f.password_field :password_confirmation %></p>
+
+  <%= f.submit "Update user account" %>
+<% end %>
