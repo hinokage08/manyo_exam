@@ -1,15 +1,15 @@
-<h2>ユーザー一覧</h2>
+<h2><%= t('view.user_index') %></h2>
 
-<%= link_to "新規登録", new_admin_user_path, class: "btn btn-primary" %>
+<%= link_to t('view.new'), new_admin_user_path, class: "btn btn-primary" %>
 
 <table>
   <tr>
-    <th class= 'th_user_name'><%= "ユーザー名" %></th>
-    <th class= 'th_email'><%= "メールアドレス" %></th>
-    <th class= 'th_admin'><%= "管理者権限" %></th>
-    <th class= 'th_tasks_count'><%= "タスク数" %></th>
-    <th class= 'th_created_at'><%= "作成日時" %></th>
-    <th class= 'th_updated_at'><%= "更新日時" %></th>
+    <th class= 'th_user_name'><%= t('view.name') %></th>
+    <th class= 'th_email'><%= t('view.email') %></th>
+    <th class= 'th_admin'><%= t('view.admin') %></th>
+    <th class= 'th_tasks_count'><%= t('view.tasks_count') %></th>
+    <th class= 'th_created_at'><%= t('view.created_at') %></th>
+    <th class= 'th_updated_at'><%= t('view.updated_at') %></th>
   </tr>
 
 <% @users.each do |user| %>
@@ -20,9 +20,9 @@
     <td><%= user.tasks.count %></td>
     <td><%= user.created_at.strftime('%Y-%m-%d') %></td>
     <td><%= user.updated_at.strftime('%Y-%m-%d') %></td>
-    <td><div class="alert alert-warning" role="alert"><%= link_to "詳細", admin_user_path(user.id), class: "alert-link" %></div></td>
-    <td><div class="alert alert-info" role="alert"><%= link_to "編集", edit_admin_user_path(user.id), class: "alert-link" %></div></td>
-    <td><div class="alert alert-danger" role="alert"><%= link_to "削除", [:admin, user], class: "alert-link",  method: :delete ,data: { confirm: "本当に削除してもよろしいですか？" } %></td>
+    <td><div class="alert alert-warning" role="alert"><%= link_to t('view.show'), admin_user_path(user.id), class: "alert-link" %></div></td>
+    <td><div class="alert alert-info" role="alert"><%= link_to t('view.edit'), edit_admin_user_path(user.id), class: "alert-link" %></div></td>
+    <td><div class="alert alert-danger" role="alert"><%= link_to t('view.delete'), [:admin, user], class: "alert-link",  method: :delete ,data: { confirm: "本当に削除してもよろしいですか？" } %></td>
   </tr>
 <% end %>
 </table>

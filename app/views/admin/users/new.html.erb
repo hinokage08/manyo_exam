@@ -15,5 +15,7 @@
   <%= f.label :password_confirmation %>
   <p><%= f.password_field :password_confirmation %></p>
 
-  <%= f.submit "Create user account" %>
+  <%= f.submit t('view.user_new') %>
 <% end %>
+
+<%= link_to t('view.user_index'), admin_users_path %>

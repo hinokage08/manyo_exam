@@ -8,4 +8,14 @@ class User < ApplicationRecord
   before_validation { email.downcase! }
   has_secure_password
 
+  before_destroy :last_admin_not_delete
+  before_update :last_admin_not_change
+  def last_admin_not_delete
+    throw(:abort)
+    User.where(admin: true).count < 1
+  end
+
+  def last_admin_not_change
+     User.where(admin: true).count < 1
+  end
 end

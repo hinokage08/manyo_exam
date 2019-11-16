@@ -1,6 +1,6 @@
 <h2><%= @user.name %></h2>
 
-<p>メールアドレス: <%= @user.email %></p>
+<p><%= t('view.email'),  @user.email %></p>
 
 <table>
   <tr>
@@ -23,3 +23,5 @@
   </tr>
 <% end %>
 </table>
+
+<%= link_to t('view.user_index'), admin_users_path %>
