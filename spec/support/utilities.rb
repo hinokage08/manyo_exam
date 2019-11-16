@@ -4,3 +4,13 @@ def log_in(user)
   fill_in "Password",with: user.password
   click_button 'Log in'
 end
+
+def create_task(user)
+  log_in(user)
+  visit new_task_path
+  fill_in "タスク名",with: "test_01"
+  fill_in "タスク内容",with: "test_01"
+  fill_in "終了期限",with: "2019-11-14"
+  select '高', from: '優先度'
+  click_button '登録する'
+end

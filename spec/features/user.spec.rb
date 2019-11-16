@@ -9,11 +9,11 @@ RSpec.feature "ユーザー機能", type: :feature do
   end
   scenario "ユーザー登録のテスト" do
     visit new_user_path
-    fill_in "Name",with: 'test'
-    fill_in "Email",with:"test@yahoo.co.jp"
-    fill_in "Password",with:"testtest"
-    fill_in "Password confirmation",with:"testtest"
-    click_button 'Create my account'
+    fill_in "ユーザー名",with: 'test'
+    fill_in "メールアドレス",with:"test@yahoo.co.jp"
+    fill_in "パスワード",with:"testtest"
+    fill_in "パスワード確認",with:"testtest"
+    click_button 'ユーザー登録'
     click_link 'Profile'
     expect(page).to have_content "test@yahoo.co.jp"
   end
