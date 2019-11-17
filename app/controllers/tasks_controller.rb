@@ -1,14 +1,15 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
+  before_action :display_limit
   def index
     if params[:search]
-      @tasks = Task.task_name_search(params[:task_name]).status_search(params[:status]).page(params[:page]).per(3)
+      @tasks = current_user.tasks.task_name_search(params[:task_name]).status_search(params[:status]).page(params[:page]).per(3)
     elsif params[:sort_deadline]
-      @tasks = Task.page(params[:page]).per(3).order(deadline: "DESC")
+      @tasks = current_user.tasks.page(params[:page]).per(3).order(deadline: "DESC")
     elsif params[:sort_priority]
-      @tasks = Task.page(params[:page]).per(3).order(priority: "ASC")
+      @tasks = current_user.tasks.page(params[:page]).per(3).order(priority: "ASC")
     else
-      @tasks = Task.page(params[:page]).per(3).order(id: "DESC")
+      @tasks = current_user.tasks.page(params[:page]).per(3).order(id: "DESC")
     end
   end
 
@@ -17,7 +18,7 @@ class TasksController < ApplicationController
   end
 
   def create
-    @task = Task.new(task_params)
+    @task = current_user.tasks.build(task_params)
     if @task.save
       redirect_to task_path(@task.id), notice: "タスクを作成しました"
     else
@@ -52,6 +53,10 @@ class TasksController < ApplicationController
 
   def set_task
     @task = Task.find(params[:id])
+  end
+
+  def display_limit
+    redirect_to new_session_path unless logged_in?
   end
 
 end

@@ -12,6 +12,13 @@ ja:
         deadline: 終了期限
         status: ステータス
         priority: 優先度
+      user:
+        name: ユーザー名
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: パスワード確認
+        admin: 管理者権限
+
   view:
     tasks_show: タスク詳細
     task_name: タスク名
@@ -36,3 +43,14 @@ ja:
     status_search: ステータス検索
     task_new: タスクを作成
     task_update: タスクを更新
+    name: ユーザー名
+    email: メールアドレス
+    password: パスワード
+    password_confirmation: パスワード確認
+    admin: 管理者権限
+    tasks_count: タスク数
+    user_index: ユーザー一覧
+    user_new: ユーザー登録
+    login: ログイン
+    user_update: ユーザー情報更新
+    user_edit: ユーザー情報編集

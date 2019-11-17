@@ -1,0 +1,28 @@
+<h2><%= @user.name %></h2>
+
+<%= t('view.email')%>
+<%= @user.email %>
+
+<table>
+  <tr>
+    <th class= 'th_task_name'><%= t('view.task_name') %></th>
+    <th class= 'th_content'><%= t('view.content') %></th>
+    <th class= 'th_created_at'><%= t('view.created_at') %></th>
+    <th class= 'th_deadline'><%= t('view.deadline') %></th>
+    <th class= 'th_status'><%= t('view.status') %></th>
+    <th class= 'th_priority'><%= t('view.priority') %></th>
+  </tr>
+
+<% @user.tasks.each do |task| %>
+  <tr>
+    <td><%= task.task_name %></td>
+    <td><%= task.content %></td>
+    <td><%= task.created_at.strftime('%Y-%m-%d') %></td>
+    <td><%= task.deadline.strftime('%Y-%m-%d') %></td>
+    <td><%= task.status %></td>
+    <td><%= task.priority %></td>
+  </tr>
+<% end %>
+</table>
+
+<%= link_to t('view.user_index'), admin_users_path %>

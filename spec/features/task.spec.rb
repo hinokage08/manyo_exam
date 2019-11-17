@@ -1,11 +1,14 @@
 require 'rails_helper'
+require 'support/utilities'
 
 RSpec.feature "タスク管理機能", type: :feature do
 
   background do
-    FactoryBot.create(:task)
-    FactoryBot.create(:second_task)
-    FactoryBot.create(:third_task)
+    @user1 = FactoryBot.create(:first_user)
+    @task1 = FactoryBot.create(:task)
+    @task2 = FactoryBot.create(:second_task)
+    @task3 = FactoryBot.create(:third_task)
+    log_in(@user1)
   end
   scenario "タスク一覧のテスト" do
     visit tasks_path
@@ -16,10 +19,10 @@ RSpec.feature "タスク管理機能", type: :feature do
   scenario "タスク作成のテスト" do
     visit new_task_path
     fill_in 'タスク名', with: 'test_task'
-    fill_in '内容', with: 'test'
+    fill_in 'タスク内容', with: 'test'
     fill_in '終了期限', with: '2019-11-14'
     select '高', from: '優先度'
-    click_on 'タスクを作成'
+    click_button '登録する'
     expect(page).to have_content 'test_task'
     expect(page).to have_content 'test'
     expect(page).to have_content '2019-11-14'
@@ -28,10 +31,9 @@ RSpec.feature "タスク管理機能", type: :feature do
   end
 
   scenario "タスク詳細のテスト" do
-    @task = Task.create!(task_name: 'test_task', content: 'test', deadline: '2019-11-14', status: '未着手', priority: '高')
-    visit task_path(@task)
-    expect(page).to have_content 'test_task'
-    expect(page).to have_content 'test'
+    visit task_path(@task1)
+    expect(page).to have_content 'test_01'
+    expect(page).to have_content 'test_01'
     expect(page).to have_content '2019-11-14'
     expect(page).to have_content '未着手'
     expect(page).to have_content '高'
