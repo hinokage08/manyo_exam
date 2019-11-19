@@ -12,6 +12,18 @@ class Task < ApplicationRecord
   enum status: %i[未着手 着手中 完了]
   enum priority: %i[高 中 低]
 
-  scope :task_name_search, -> task_name { where("task_name LIKE ?", "%#{task_name}%") }
-  scope :status_search, -> status { where(status: status) }
+  scope :name_search, -> task_name {
+    next if task_name.blank?
+    where("task_name LIKE ?", "%#{task_name}%")
+  }
+
+  scope :status_search, -> status {
+    next if status.blank?
+    where(status: status)
+  }
+
+  scope :label_search, -> label {
+    next if label.blank?
+    where(id: Labelling.where(label_id: label).pluck(:task_id))
+  }
 end

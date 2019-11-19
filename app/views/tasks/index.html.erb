@@ -7,13 +7,17 @@
   <%= form.text_field :task_name%>
 
   <%= form.label :status_search, t('view.status_search') %>
-  <%= form.select :status, Task.statuses.keys %>
+  <%= form.select :status, Task.statuses.keys, include_blank: true %>
+
+  <%= form.label :label_search, "ラベル検索" %>
+  <%= form.select :label_id, Label.pluck(:name, :id), include_blank: true %>
 
   <%= form.hidden_field :search, value: true %>
 
   <%= form.submit 'Search' %> <%= link_to 'Clear', tasks_path %>
 <% end %>
 <%= link_to t('view.new'), new_task_path, class: "btn btn-primary" %>
+<%= link_to "ラベル作成", new_label_path, class: "btn btn-primary" %>
 
 <table>
   <tr>

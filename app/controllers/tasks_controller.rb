@@ -1,15 +1,21 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
   before_action :display_limit
+
+  PER = 10
+
   def index
     if params[:search]
-      @tasks = current_user.tasks.task_name_search(params[:task_name]).status_search(params[:status]).page(params[:page]).per(3)
+      @tasks = current_user.tasks.name_search(params[:task_name])
+                           .status_search(params[:status])
+                           .label_search(params[:label_id])
+                           .page(params[:page]).per(PER)
     elsif params[:sort_deadline]
-      @tasks = current_user.tasks.page(params[:page]).per(3).order(deadline: "DESC")
+      @tasks = current_user.tasks.page(params[:page]).per(PER).order(deadline: "DESC")
     elsif params[:sort_priority]
-      @tasks = current_user.tasks.page(params[:page]).per(3).order(priority: "ASC")
+      @tasks = current_user.tasks.page(params[:page]).per(PER).order(priority: "ASC")
     else
-      @tasks = current_user.tasks.page(params[:page]).per(3).order(id: "DESC")
+      @tasks = current_user.tasks.page(params[:page]).per(PER).order(id: "DESC")
     end
   end
 
