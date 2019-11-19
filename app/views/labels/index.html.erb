@@ -3,11 +3,15 @@
 <table>
   <tr>
     <th class= 'th_label_name'><%= "ラベル名" %></th>
+    <th class= 'th_created_at'><%= t('view.created_at') %></th>
+    <th class= 'th_updated_at'><%= t('view.updated_at') %></th>
   </tr>
 
 <% @labels.each do |label| %>
   <tr>
     <td><%= label.name %></td>
+    <td><%= label.created_at.strftime('%Y-%m-%d') %></td>
+    <td><%= label.updated_at.strftime('%Y-%m-%d') %></td>
     <td><div class="alert alert-info" role="alert"><%= link_to t('view.edit'), edit_label_path(label.id), class: "alert-link" %></div></td>
     <td><div class="alert alert-danger" role="alert"><%= link_to t('view.delete'), label_path(label.id), class: "alert-link",  method: :delete ,data: { confirm: "本当に削除してもよろしいですか？" } %></td>
   </tr>
