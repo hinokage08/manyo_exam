@@ -2,7 +2,7 @@ class LabelsController < ApplicationController
   before_action :set_params, only: [:edit, :destroy, :update]
   before_action :display_limit
   def index
-    @labels = Label.all
+    @labels = current_user.labels
   end
 
   def new

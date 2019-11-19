@@ -60,8 +60,8 @@ ja:
     login: ログイン
     user_update: ユーザー情報更新
     user_edit: ユーザー情報編集
-    labels_new: ラベルを作成
-    label_new: ラベル作成
+    labels_new: ラベル作成
+    label_new: ラベルを作成
     label_index: ラベル一覧
     label_edit: ラベル編集
     label_update: ラベル更新

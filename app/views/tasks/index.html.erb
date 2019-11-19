@@ -1,5 +1,4 @@
 <h2><%= t('view.index') %></h2>
-<%= notice %>
 <%= link_to t('view.deadline_sort'), tasks_path(sort_deadline: "true") %>
 <%= link_to t('view.priority_sort'), tasks_path(sort_priority: "true") %>
 <%= form_with(model: @task, local: true, method: :get, url: tasks_path) do |form| %>
