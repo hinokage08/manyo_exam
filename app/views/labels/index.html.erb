@@ -1,0 +1,15 @@
+<h2>ラベル一覧</h2>
+
+<table>
+  <tr>
+    <th class= 'th_label_name'><%= "ラベル名" %></th>
+  </tr>
+
+<% @labels.each do |label| %>
+  <tr>
+    <td><%= label.name %></td>
+    <td><div class="alert alert-info" role="alert"><%= link_to t('view.edit'), edit_label_path(label.id), class: "alert-link" %></div></td>
+    <td><div class="alert alert-danger" role="alert"><%= link_to t('view.delete'), label_path(label.id), class: "alert-link",  method: :delete ,data: { confirm: "本当に削除してもよろしいですか？" } %></td>
+  </tr>
+<% end %>
+</table>
