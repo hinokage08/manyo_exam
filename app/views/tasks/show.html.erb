@@ -6,7 +6,7 @@
   <p><%= t('view.priority') %>: <%= @task.priority %></p>
   <p><%= t('view.status') %>: <%= @task.status %></p>
   <p>関連づけたタグ:
-    <% Label.all.each do |label| %>
+    <% @task.labels.each do |label| %>
     <label><%= label.name %></label>
   <% end %>
   </p>
