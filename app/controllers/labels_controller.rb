@@ -1,5 +1,6 @@
 class LabelsController < ApplicationController
   before_action :set_params, only: [:edit, :destroy, :update]
+  before_action :display_limit
   def index
     @labels = Label.all
   end
@@ -41,5 +42,9 @@ class LabelsController < ApplicationController
 
   def set_params
     @label = Label.find(params[:id])
+  end
+
+  def display_limit
+    redirect_to new_session_path unless logged_in?
   end
 end

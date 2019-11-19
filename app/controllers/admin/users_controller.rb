@@ -1,5 +1,5 @@
 class Admin::UsersController < ApplicationController
-  #before_action :check_admin
+  before_action :check_admin
   def index
     @users = User.select(:id, :name, :email, :admin, :created_at, :updated_at).page(params[:page]).per(5).order(id: "ASC")
   end
@@ -54,7 +54,7 @@ class Admin::UsersController < ApplicationController
 
 
   def check_admin
-    raise Forbidden unless current_user.admin?
+    raise Forbidden unless logged_in? && current_user.admin? 
   end
 
 end
