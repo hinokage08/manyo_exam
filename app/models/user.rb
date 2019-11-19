@@ -8,6 +8,7 @@ class User < ApplicationRecord
   before_update :last_admin_not_change
 
   has_many :tasks, dependent: :destroy
+  has_many :labels, dependent: :destroy
 
   has_secure_password
 

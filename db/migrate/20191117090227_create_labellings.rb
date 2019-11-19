@@ -5,8 +5,8 @@ class CreateLabellings < ActiveRecord::Migration[5.2]
       t.bigint "label_id"
       t.datetime "created_at", null: false
       t.datetime "updated_at", null: false
-      t.index ["label_id"], name: "index_labelings_on_label_id"
-      t.index ["task_id"], name: "index_labelings_on_task_id"
+      t.index ["label_id"], name: "index_labellings_on_label_id"
+      t.index ["task_id"], name: "index_labellings_on_task_id"
     end
   end
 end

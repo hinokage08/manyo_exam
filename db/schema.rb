@@ -20,14 +20,15 @@ ActiveRecord::Schema.define(version: 2019_11_17_090227) do
     t.bigint "label_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["label_id"], name: "index_labelings_on_label_id"
-    t.index ["task_id"], name: "index_labelings_on_task_id"
+    t.index ["label_id"], name: "index_labellings_on_label_id"
+    t.index ["task_id"], name: "index_labellings_on_task_id"
   end
 
   create_table "labels", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
   end
 
   create_table "tasks", force: :cascade do |t|

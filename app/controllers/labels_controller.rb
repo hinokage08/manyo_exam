@@ -9,7 +9,7 @@ class LabelsController < ApplicationController
   end
 
   def create
-    @label = Label.new(label_params)
+    @label = current_user.labels.build(label_params)
     if @label.save
       redirect_to labels_path, notice: "ラベルを作成しました。"
     else
