@@ -14,3 +14,10 @@ def create_task(user)
   select '高', from: '優先度'
   click_button '登録する'
 end
+
+def create_label(user)
+  log_in(user)
+  visit new_label_path
+  fill_in "ラベル名", with: "test_label"
+  click_button "ラベルを作成"
+end

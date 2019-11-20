@@ -1,0 +1,10 @@
+<h2><%= t('view.label_edit') %></h2>
+<%= form_with(model: @label, local: true) do |f| %>
+
+  <%= f.label :name %>
+  <p><%= f.text_field :name %></p>
+
+  <%= f.submit t('view.label_update') %>
+<% end %>
+
+<%= link_to t('view.label_index'), labels_path %>
