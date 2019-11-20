@@ -1,5 +1,5 @@
 class Admin::UsersController < ApplicationController
-  #before_action :check_admin
+  before_action :check_admin
   def index
     @users = User.select(:id, :name, :email, :admin, :created_at, :updated_at).page(params[:page]).per(5).order(id: "ASC")
   end
