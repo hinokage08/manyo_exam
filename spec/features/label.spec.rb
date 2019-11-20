@@ -25,7 +25,7 @@ RSpec.feature "ラベル機能", type: :feature do
   scenario "ユーザー削除のテスト" do
     visit labels_path
      save_and_open_page
-    all('tr td')[4].click_link
+    all('tr td')[5].click_link
     expect(page).to have_content 'ラベルを削除しました。'
   end
 end
