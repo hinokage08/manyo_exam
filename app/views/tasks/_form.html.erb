@@ -33,12 +33,24 @@
     <div class="status">
       <%= form.hidden_field :status, value: "未着手" %>
     </div>
+    <div class="label">
+    <% Label.all.each do |label| %>
+    <%= form.check_box :label_ids, { multiple: true, checked: label[:checked], disabled: label[:disabled], include_hidden: false }, label[:id] %>
+    <label><%= label.name %></label>
+    <% end %>
+    </div>
     <%= form.submit  %>
 
     <% else %>
     <div class="status">
       <%= form.label :status %>
       <p><%= form.select :status, {未着手:'未着手', 着手中: '着手中', 完了: '完了'} %></p>
+    </div>
+    <div class="label">
+    <% Label.all.each do |label| %>
+    <%= form.check_box :label_ids, { multiple: true, checked: label[:checked], disabled: label[:disabled], include_hidden: false }, label[:id] %>
+    <label><%= label.name %></label>
+    <% end %>
     </div>
     <%= form.submit t('view.task_update') %>
     <% end %>

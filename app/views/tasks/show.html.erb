@@ -5,6 +5,11 @@
   <p><%= t('view.deadline') %>: <%= @task.deadline.strftime('%Y-%m-%d') %></p>
   <p><%= t('view.priority') %>: <%= @task.priority %></p>
   <p><%= t('view.status') %>: <%= @task.status %></p>
+  <p>関連づけたタグ:
+    <% @task.labels.each do |label| %>
+    <label><%= label.name %></label>
+  <% end %>
+  </p>
 
   <%= link_to t('view.show'), edit_task_path(@task.id) %>
   |

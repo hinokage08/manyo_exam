@@ -9,6 +9,7 @@ RSpec.feature "タスク管理機能", type: :feature do
     @task2 = FactoryBot.create(:second_task)
     @task3 = FactoryBot.create(:third_task)
     log_in(@user1)
+    create_label(@user1)
   end
   scenario "タスク一覧のテスト" do
     visit tasks_path
@@ -60,5 +61,23 @@ RSpec.feature "タスク管理機能", type: :feature do
     task = all('tr td')
     task_0 = task[5]
     expect(task_0).to have_content '高'
+  end
+
+  scenario 'タスクの詳細に関連づけしたラベルが一覧になっているかのテスト' do
+    visit edit_task_path(@task1)
+    check 'task_label_ids_7'
+    click_on 'タスクを更新'
+    visit task_path(@task1)
+    expect(page).to have_content 'test_label'
+  end
+
+  scenario 'ラベルでの絞り込みができるかのテスト' do
+    visit edit_task_path(@task1)
+    check 'task_label_ids_8'
+    click_on 'タスクを更新'
+    visit tasks_path
+    select 'test_label', from: 'label_id'
+    click_on 'Search'
+    expect(page).to have_content 'test_01'
   end
 end

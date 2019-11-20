@@ -7,8 +7,9 @@
 |:---:|:---:|
 |id|integer|
 |name|string|
-|password|string|
 |password_digest|string|
+|email|string|
+|admin|boolean|
 
 
 * Taskモデル
@@ -23,6 +24,7 @@
 |created_at|datetime|
 |updated_at|datetime|
 |priority|integer|
+|user_id|bigint|
 
 
 * Labelモデル
@@ -30,6 +32,10 @@
 |カラム名|データ型|
 |:---:|:---:|
 |id|integer|
+|name|string|
+|created_at|datetime|
+|updated_at|datetime|
+|user_id|bigint|
 
 
 ---

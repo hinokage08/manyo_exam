@@ -1,5 +1,4 @@
 <h2><%= t('view.index') %></h2>
-<%= notice %>
 <%= link_to t('view.deadline_sort'), tasks_path(sort_deadline: "true") %>
 <%= link_to t('view.priority_sort'), tasks_path(sort_priority: "true") %>
 <%= form_with(model: @task, local: true, method: :get, url: tasks_path) do |form| %>
@@ -7,13 +6,17 @@
   <%= form.text_field :task_name%>
 
   <%= form.label :status_search, t('view.status_search') %>
-  <%= form.select :status, Task.statuses.keys %>
+  <%= form.select :status, Task.statuses.keys, include_blank: true %>
+
+  <%= form.label :label_search, t('view.label_search') %>
+  <%= form.select :label_id, Label.pluck(:name, :id), include_blank: true %>
 
   <%= form.hidden_field :search, value: true %>
 
   <%= form.submit 'Search' %> <%= link_to 'Clear', tasks_path %>
 <% end %>
 <%= link_to t('view.new'), new_task_path, class: "btn btn-primary" %>
+<%= link_to t('view.label_index'), labels_path, class: "btn btn-primary" %>
 
 <table>
   <tr>
